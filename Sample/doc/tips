@@ -1,0 +1,8 @@
+使用此命令 pip freeze > requirements.txt
+可查看本项目装了哪些包及其版及其版本
+
+使用此命令 pip install -r requirements.txt
+可下载这些包
+
+在项目增加manager后 可以使用命令 python sample.py runserver
+运行程序

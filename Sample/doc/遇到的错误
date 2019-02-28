@@ -1,0 +1,9 @@
+ 'Blueprint' object has no attribute 'template_test'：在改蓝图的时候，因为蓝图没有template_test装饰器，
+ 而我在之前的页面中使用到了，所以报错，注释掉语句后，因为在base.html有用到这个装饰器的函数，我在views里边注销了，
+ 但是没改base.html所以依旧报错，把他们注释了就都没问题了
+
+ 数据迁移的问题：在数据表改变的时候，需要用一下命令进行更新，比如数据表中增加了一个字段
+ 先：python manager.py db migrate
+ 然后：python manager.py db upgrade
+
+
