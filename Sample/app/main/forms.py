@@ -2,6 +2,7 @@ from flask.ext.wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask.ext.pagedown.fields import PageDownField
+from flask_pagedown.fields import PageDownField
 from flask_babel import gettext as _
 
 
