@@ -11,6 +11,8 @@
         {% for message in get_flashed_messages() %}
             <div class="alert-info">{{ message }}</div>
         {% endfor %}
+    <div class="col-md-4">
         {{ wtf.quick_form(form) }}
+    </div>
     </div>
 {% endblock %}

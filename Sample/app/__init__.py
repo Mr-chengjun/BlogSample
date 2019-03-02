@@ -11,6 +11,8 @@ from flask_babel import Babel, gettext as _
 from flask_gravatar import Gravatar
 from flask_pagedown import PageDown
 
+# from flask_admin import Admin
+
 basedir = path.abspath(path.dirname(__file__))
 
 
@@ -23,8 +25,10 @@ class RegexConverter(BaseConverter):
 bootstrap = Bootstrap()
 nav = Nav()
 db = SQLAlchemy()
+babel = Babel()
 pagedown = PageDown()
 login_manager = LoginManager()
+# admin = Admin()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
@@ -32,7 +36,8 @@ login_manager.login_view = 'auth.login'
 def create_app():
     app = Flask(__name__)
     app.url_map.converters['regex'] = RegexConverter
-    app.config.from_pyfile('config')
+    app.secret_key = 'python'
+    app.config['BABEL_DEFAULT_LOCALE'] = 'zh'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + path.join(basedir, 'data.sqlite')
     app.config['SQLALCHEMY_COMMIT_ON_TEADOWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -41,7 +46,9 @@ def create_app():
     nav.init_app(app)
     login_manager.init_app(app)
     pagedown.init_app(app)
+    babel.init_app(app)
     Gravatar(app, size=35)
+    # admin.init_app(app)
 
     from .auth import auth as auth_blueprint
     from .main import main as main_blueprint

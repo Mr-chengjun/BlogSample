@@ -6,3 +6,16 @@
 
 在项目增加manager后 可以使用命令 python sample.py runserver
 运行程序
+
+全球化设置高之后使用如下命令实现对内容提取，注意路径，是进入到了app里边
+E:\Sample\app>pybabel extract -F babel.cfg -o messages.pot .
+
+使用如下命令实现生成一个英文的模板
+E:\Sample\app>pybabel init -i messages.pot -d translations -l en
+想要编辑po文件，推荐使用Poedit
+
+做成这样之后并不能被识别，我们需要做成mo的文件才行，使用如下命令
+E:\Sample\app>pybabel compile -d translations
+
+如果messages模板变更，可以使用如下命令实现更新translations
+E:\Sample\app>pybabel update -i messages.pot -d translations

@@ -4,6 +4,7 @@
     <div class="container">
         <a href="{{ url_for('main.edit') }}" class="btn btn-primary">发表新文章</a>
     </div>
+    {# 已有的博客文章 #}
     <div class="container">
         {% for post in posts %}
             <h2><a href="{{ url_for('main.posts', id=post.id) }}">{{ post.title }}</a></h2>

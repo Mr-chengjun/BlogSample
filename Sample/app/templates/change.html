@@ -6,13 +6,13 @@
             <h1>{{ title }}</h1>
         </div>
     </div>
+    {#    {{ super() }}#}
     <div class="container">
         {% for message in get_flashed_messages() %}
             <div class="alert-info">{{ message }}</div>
         {% endfor %}
         <div class="col-md-4">
             {{ wtf.quick_form(form) }}
-            <img src="{{ url_for('auth.get_code') }} " onclick="this.src='{{ url_for('auth.get_code') }}'">
         </div>
     </div>
 {% endblock %}

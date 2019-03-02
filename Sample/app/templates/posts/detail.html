@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+
 {% block page_body %}
     <div class="container">
         {# Meta 信息 #}
-        <span>作者:{{ post.author.name }}</span> <span>发表日期:{{ post.created }}</span>
-
+        <span>作者:{{ post.author.name }}</span> <span>{{ _("发表日期") }}:{{ post.created }}</span>
+        <hr>
         {# 正文 #}
         <div>
             {{ post.body_html | safe }}
@@ -13,6 +14,7 @@
 
         {# 操作链接 #}
         <h3>评论</h3>
+
         {# 发表评论 #}
         <div>
             {{ wtf.quick_form(form) }}

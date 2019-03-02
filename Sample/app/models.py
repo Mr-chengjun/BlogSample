@@ -50,6 +50,8 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post')
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    favorites = db.relationship('Favorite', backref='post')
+
     @staticmethod
     def on_body_changed(target, value, oldvalue, initiator):
         if value is None or (value is ''):
@@ -68,3 +70,11 @@ class Comment(db.Model):
     created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
+class Favorite(db.Model):
+    __tablename__ = 'favorites'
+    id = db.Column(db.Integer, primary_key=True)
+    created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))

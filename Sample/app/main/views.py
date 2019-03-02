@@ -4,6 +4,7 @@ from . import main
 from .. import db
 from ..models import Post, Comment
 from .forms import CommentForm, PostForm
+from flask_babel import gettext as _
 
 
 @main.route('/')
@@ -12,10 +13,10 @@ def index():
     page_index = request.args.get('page', 1, type=int)
     query = Post.query.order_by(Post.created.desc())
 
-    pagination = query.paginate(page_index,per_page=20,error_out=False)
+    pagination = query.paginate(page_index, per_page=20, error_out=False)
     posts = pagination.items
     return render_template('index.html',
-                           title='欢迎来到博客系统',
+                           title=_('欢迎来到博客系统'),
                            posts=posts,
                            pagination=pagination)
 
@@ -25,20 +26,21 @@ def about():
     return render_template('about.html', title='关于')
 
 
-@main.route('/admin')
-@login_required
-def admin():
-    return 'Admin'
+# from flask_admin import BaseView, expose
 
 
-@main.route('/services')
-def services():
-    return 'Services'
+# class MyView(BaseView):
+#     @expose('/')
+#     def admintest(self):
+#         return self.render('index.html')
+#
+# # from app import admin
+# # admin.add_view(MyView(name='Test'))
 
-
-@main.route('/projects/')
-def projects():
-    return 'The project page'
+# @main.route('/admin')
+# @login_required
+# def admin():
+#     return 'Admin'
 
 
 # @app.route('/upload', methods=['GET', 'POST'])
@@ -57,6 +59,7 @@ def page_not_found(erro):
 
 
 @main.route('/posts/<int:id>', methods=['GET', 'POST'])
+@login_required
 def posts(id):
     # Detail 详情页
     post = Post.query.get_or_404(id)
@@ -95,9 +98,9 @@ def edit(id=0):
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('.posts', id=post.id))
-    title = '添加新文章'
+    title = _('添加新文章')
     if id > 0:
-        title = '编辑 - %' % post.title
+        title = _('编辑 - %(title)', title=post.title)
     return render_template('posts/edit.html',
                            title=title,
                            form=form,

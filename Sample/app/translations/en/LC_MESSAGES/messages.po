@@ -1,0 +1,52 @@
+# English translations for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-02-28 14:45+0800\n"
+"PO-Revision-Date: 2019-02-28 14:54+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+
+#: main/forms.py:9
+msgid "标题"
+msgstr ""
+
+#: main/forms.py:10
+msgid "正文"
+msgstr ""
+
+#: main/forms.py:11 main/forms.py:16
+msgid "发表"
+msgstr ""
+
+#: main/forms.py:15
+msgid "评论"
+msgstr ""
+
+#: main/views.py:19
+msgid "欢迎来到博客系统"
+msgstr ""
+
+#: main/views.py:99
+msgid "添加新文章"
+msgstr ""
+
+#: main/views.py:101
+msgid "编辑 - %(title)"
+msgstr ""
+
+#: templates/posts/detail.html:7
+msgid "发表日期"
+msgstr ""
+
